@@ -1,0 +1,43 @@
+.btn{
+
+padding:16px 30px;
+
+border-radius:999px;
+
+transition:var(--transition);
+
+font-weight:600;
+
+}
+
+.btn-primary{
+
+background:var(--primary);
+
+color:white;
+
+}
+
+.btn-primary:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 10px 35px rgba(229,57,53,.45);
+
+}
+
+.btn-secondary{
+
+background:transparent;
+
+border:1px solid var(--border);
+
+color:white;
+
+}
+
+.btn-secondary:hover{
+
+background:var(--surface);
+
+}

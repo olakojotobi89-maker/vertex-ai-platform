@@ -1,0 +1,238 @@
+/* ============================
+   Vertex AI — Shared Navigation
+   Added to support fixed top header,
+   sliding sidebar, and fixed bottom nav.
+   Mobile-first design (320px–430px).
+============================ */
+
+:root{
+  --vx-primary:#E11D2E;
+  --vx-bg:#070707;
+  --vx-surface:#161616;
+  --vx-border:#2A2A2A;
+  --vx-text:#FFFFFF;
+  --vx-muted:#B5B5B5;
+
+  --vx-radius:18px;
+  --vx-shadow: 0 18px 50px rgba(0,0,0,.42);
+  --vx-blur: 12px;
+}
+
+/* Shared shell spacing for pages that use the new navigation */
+.vx-app-shell{
+  min-height:100vh;
+  background: var(--vx-bg);
+  color: var(--vx-text);
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+.vx-topbar{
+  position:fixed;
+  left:0; right:0; top:0;
+  z-index:50;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding: calc(10px + env(safe-area-inset-top)) 14px 10px;
+  background: rgba(7,7,7,.72);
+  border-bottom: 1px solid rgba(42,42,42,.75);
+  backdrop-filter: blur(var(--vx-blur));
+  -webkit-backdrop-filter: blur(var(--vx-blur));
+}
+
+.vx-topbar-title{
+  font-weight:1000;
+  letter-spacing: .01em;
+  font-size:14px;
+  opacity:.95;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  margin:0 10px;
+}
+
+.vx-content{
+  padding-top: 62px; /* topbar */
+  padding-bottom: 92px; /* bottom nav */
+}
+
+.vx-icon-btn{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  border:1px solid rgba(42,42,42,.95);
+  background: rgba(22,22,22,.88);
+  color: var(--vx-text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition: transform 200ms ease, border-color 200ms ease, background 200ms ease;
+}
+
+.vx-avatar-btn{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  border:1px solid rgba(42,42,42,.95);
+  background: rgba(22,22,22,.88);
+  color: var(--vx-text);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.vx-avatar{
+  width:30px;
+  height:30px;
+  border-radius:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background: rgba(225,29,46,.14);
+  border: 1px solid rgba(225,29,46,.25);
+  font-weight:1000;
+}
+
+/* Ripple via pseudo element */
+.ripple{position:relative; overflow:hidden; -webkit-tap-highlight-color: transparent;}
+.ripple::after{
+  content:"";
+  position:absolute;
+  left:50%; top:50%;
+  width:12px; height:12px;
+  border-radius:50%;
+  background: rgba(255,255,255,.35);
+  opacity:0;
+  transform: translate(-50%,-50%) scale(0);
+  transition: transform 450ms ease, opacity 450ms ease;
+  pointer-events:none;
+}
+.ripple:active::after{opacity:.9; transform:translate(-50%,-50%) scale(18);}
+
+.vx-overlay{
+  position:fixed;
+  inset:0;
+  background: rgba(0,0,0,.55);
+  z-index:55;
+}
+
+.vx-sidebar{
+  position:fixed;
+  left:0; top:0; bottom:0;
+  width:min(86vw, 320px);
+  z-index:60;
+  background: rgba(22,22,22,.92);
+  border-right: 1px solid rgba(42,42,42,.85);
+  backdrop-filter: blur(var(--vx-blur));
+  -webkit-backdrop-filter: blur(var(--vx-blur));
+  transform: translateX(-102%);
+  transition: transform 260ms cubic-bezier(.2,.8,.2,1);
+  display:flex;
+  flex-direction:column;
+}
+
+.vx-sidebar.is-open{ transform: translateX(0); }
+
+.vx-sidebar-header{
+  padding: 18px 16px 10px;
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+
+.vx-sidebar-logo{
+  width:44px; height:44px; border-radius:16px;
+}
+
+.vx-sidebar-header h2{margin:0; font-weight:1000; font-size:14px;}
+.vx-sidebar-header p{margin-top:4px; color:rgba(255,255,255,.6); font-weight:800; font-size:12px; line-height:1.2;}
+
+.vx-sidebar-nav{
+  padding: 6px 12px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+
+.vx-sidebar-link{
+  min-height:48px;
+  border-radius:16px;
+  padding:12px 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  color: rgba(255,255,255,.75);
+  font-weight:900;
+  text-decoration:none;
+  border:1px solid transparent;
+  transition: background 200ms ease, border-color 200ms ease, transform 200ms ease, color 200ms ease;
+}
+
+.vx-sidebar-link i{width:20px;height:20px; color: rgba(255,255,255,.75);}
+.vx-sidebar-link:active{transform: scale(.99);}
+
+.vx-sidebar-link.is-active{
+  background: rgba(225,29,46,.10);
+  border-color: rgba(225,29,46,.35);
+  color: rgba(255,255,255,.98);
+}
+
+.vx-sidebar-footer{
+  padding: 12px 16px;
+  margin-top:auto;
+  border-top: 1px solid rgba(42,42,42,.65);
+}
+
+.vx-app-version{color: rgba(255,255,255,.55); font-weight:900; font-size:12px;}
+
+/* Bottom nav */
+.vx-bottom-nav{
+  position:fixed;
+  left:0; right:0; bottom:0;
+  z-index:50;
+  padding-bottom: calc(8px + env(safe-area-inset-bottom));
+  padding-top: 10px;
+  background: rgba(7,7,7,.78);
+  border-top: 1px solid rgba(42,42,42,.75);
+  backdrop-filter: blur(var(--vx-blur));
+  -webkit-backdrop-filter: blur(var(--vx-blur));
+}
+
+.vx-bottom-nav-inner{
+  display:flex;
+  gap:8px;
+  padding: 0 12px;
+}
+
+.vx-bottom-item{
+  flex:1;
+  min-height:48px;
+  border-radius:18px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: rgba(255,255,255,.62);
+  text-decoration:none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:6px;
+  font-weight:1000;
+  font-size:11px;
+  transition: background 200ms ease, border-color 200ms ease, color 200ms ease, transform 200ms ease;
+}
+
+.vx-bottom-item i{width:20px;height:20px;}
+
+.vx-bottom-item.is-active{
+  background: rgba(225,29,46,.12);
+  border-color: rgba(225,29,46,.45);
+  color: rgba(255,255,255,.98);
+}
+
+.vx-bottom-item:active{transform: scale(.99);}
+
+@media (min-width: 768px){
+  .vx-content{ padding-left: 16px; padding-right: 16px; }
+}
+

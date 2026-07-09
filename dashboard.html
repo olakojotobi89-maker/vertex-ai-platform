@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Vertex AI Dashboard</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/components.css">
+<link rel="stylesheet" href="css/dashboard.css">
+<script src="https://unpkg.com/lucide@latest"></script>
+
+</head>
+
+<body>
+
+<div class="phone">
+
+<!-- HEADER -->
+
+<header>
+
+<button id="menuBtn">
+
+<i data-lucide="menu"></i>
+
+</button>
+
+<div class="logo">
+
+<img src="logo.png">
+
+<div>
+
+<h3>Vertex AI</h3>
+
+<p>Business OS</p>
+
+</div>
+
+</div>
+
+<button>
+
+<i data-lucide="bell"></i>
+
+</button>
+
+</header>
+
+<!-- WELCOME -->
+
+<section class="welcome">
+
+<h4 id="greeting">
+
+Good Evening 👋
+
+</h4>
+
+<h1>
+
+Welcome back,
+
+Tobiloba.
+
+</h1>
+
+<p>
+
+Let's build something amazing today.
+
+</p>
+
+</section>
+
+<!-- SEARCH -->
+
+<section class="search">
+
+<i data-lucide="search"></i>
+
+<input
+
+type="text"
+
+placeholder="Search business ideas...">
+
+</section>
+
+<!-- QUICK ACTIONS -->
+
+<section class="actions">
+
+<div class="action">
+
+<i data-lucide="lightbulb"></i>
+
+<span>Ideas</span>
+
+</div>
+
+<div class="action">
+
+<i data-lucide="file-text"></i>
+
+<span>Business Plan</span>
+
+</div>
+
+<div class="action">
+
+<i data-lucide="chart-column"></i>
+
+<span>Marketing</span>
+
+</div>
+
+<div class="action">
+
+<i data-lucide="wallet"></i>
+
+<span>Funding</span>
+
+</div>
+
+</section>
+
+<!-- BUSINESS WORKSPACES -->
+
+<section class="workspace-section">
+
+<div class="section-title">
+
+<h2>Your Business Workspaces</h2>
+
+<button id="newWorkspace">
+
+<i data-lucide="plus"></i>
+
+</button>
+
+</div>
+
+<div class="card workspace-card">
+
+    <div class="workspace-left">
+
+        <div class="workspace-icon">
+
+            📁
+
+        </div>
+
+        <div>
+
+            <h3>Visual Vertex Technology</h3>
+
+            <p>Technology Company</p>
+
+            <span class="badge">
+
+                Active
+
+            </span>
+
+        </div>
+
+    </div>
+
+    <i data-lucide="chevron-right"></i>
+
+</div>
+<div class="workspace-card">
+
+<div class="workspace-icon">
+
+🛡️
+
+</div>
+
+<div class="workspace-info">
+
+<h3>CSTP Security Platform</h3>
+
+<p>Security Technology</p>
+
+<span>Yesterday</span>
+
+</div>
+
+<i data-lucide="chevron-right"></i>
+
+</div>
+
+<div class="workspace-card">
+
+<div class="workspace-icon">
+
+🤖
+
+</div>
+
+<div class="workspace-info">
+
+<h3>Vertex AI</h3>
+
+<p>Artificial Intelligence</p>
+
+<span>2 Hours Ago</span>
+
+</div>
+
+<i data-lucide="chevron-right"></i>
+
+</div>
+
+</section>
+
+<section class="snapshot">
+
+<div class="snapshot-header">
+
+<h2>Business Snapshot</h2>
+
+<span>Today</span>
+
+</div>
+
+<div class="snapshot-grid">
+
+<div class="snapshot-card">
+
+<h3>₦2.5M</h3>
+
+<p>Estimated Market</p>
+
+</div>
+
+<div class="snapshot-card">
+
+<h3>89%</h3>
+
+<p>Success Score</p>
+
+</div>
+
+<div class="snapshot-card">
+
+<h3>18</h3>
+
+<p>Ideas Generated</p>
+
+</div>
+
+<div class="snapshot-card">
+
+<h3>6</h3>
+
+<p>Projects</p>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="market-intelligence">
+
+<div class="section-title">
+
+<h2>Market Intelligence</h2>
+
+<a href="#">See More</a>
+
+</div>
+
+<div class="intel-card">
+
+<h3>📈 Growing Sectors</h3>
+
+<ul>
+
+<li>Solar Energy</li>
+
+<li>Logistics</li>
+
+<li>Agriculture</li>
+
+<li>Health Tech</li>
+
+</ul>
+
+</div>
+
+</section>
+
+
+<!-- Trending Business Opportunities -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>🔥 Trending Businesses</h2>
+
+<a href="#">View All</a>
+
+</div>
+
+<div class="business-card">
+
+<div>
+
+<h3>Solar Installation</h3>
+
+<p>Growing demand in Nigeria</p>
+
+</div>
+
+<span class="growth">+18%</span>
+
+</div>
+
+<div class="business-card">
+
+<div>
+
+<h3>POS Business</h3>
+
+<p>Still profitable in urban areas</p>
+
+</div>
+
+<span class="growth">+12%</span>
+
+</div>
+
+<div class="business-card">
+
+<div>
+
+<h3>Food Delivery</h3>
+
+<p>Fast-growing market</p>
+
+</div>
+
+<span class="growth">+15%</span>
+
+</div>
+
+</section>
+
+<!-- AI Recommendation -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>🤖 Vertex Recommendation</h2>
+
+</div>
+
+<div class="recommendation">
+
+<h3>Today's Insight</h3>
+
+<p>
+
+Based on current Nigerian market trends,
+
+a logistics company focused on same-day
+
+delivery could be a strong opportunity.
+
+</p>
+
+<button>
+
+Explore Opportunity
+
+</button>
+
+</div>
+
+</section>
+
+<!-- Funding -->
+
+<section class="section">
+
+<div class="section-title">
+
+<h2>💰 Funding Opportunities</h2>
+
+<a href="#">More</a>
+
+</div>
+
+<div class="funding">
+
+<div>
+
+<h3>SMEDAN</h3>
+
+<p>Business Grants</p>
+
+</div>
+
+<button>
+
+Open
+
+</button>
+
+</div>
+
+<div class="funding">
+
+<div>
+
+<h3>Bank of Industry</h3>
+
+<p>SME Loan</p>
+
+</div>
+
+<button>
+
+Open
+
+</button>
+
+</div>
+
+</section>
+
+<script>
+
+lucide.createIcons();
+
+</script>
+
+<script src="js/dashboard.js"></script>
+
+<section class="projects">
+
+<div class="section-title">
+
+<h2>Continue Projects</h2>
+
+</div>
+
+<div class="project-card">
+
+<h3>Visual Vertex Website</h3>
+
+<div class="progress">
+
+<div class="progress-fill" style="width:70%;"></div>
+
+</div>
+
+<p>70% Complete</p>
+
+</div>
+
+<div class="project-card">
+
+<h3>Security Platform</h3>
+
+<div class="progress">
+
+<div class="progress-fill" style="width:45%;"></div>
+
+</div>
+
+<p>45% Complete</p>
+
+</div>
+
+</section>
+
+<!-- CREATE WORKSPACE MODAL -->
+
+<div class="modal" id="workspaceModal">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+
+            <h2>Create Business Workspace</h2>
+
+            <button id="closeModal">&times;</button>
+
+        </div>
+
+        <p class="modal-text">
+
+            Every workspace represents one business, startup or project.
+
+        </p>
+
+        <input
+        class="input"
+        type="text"
+        placeholder="Workspace Name">
+
+        <input
+        class="input"
+        type="text"
+        placeholder="Business Type">
+
+        <input
+        class="input"
+        type="text"
+        placeholder="Industry">
+
+        <select class="input">
+
+            <option>Business Stage</option>
+
+            <option>Idea</option>
+
+            <option>Startup</option>
+
+            <option>Growing</option>
+
+            <option>Established</option>
+
+        </select>
+
+        <textarea
+        class="input textarea"
+        placeholder="Describe your business goals..."></textarea>
+
+        <button class="btn-primary">
+
+            Create Workspace
+
+        </button>
+
+    </div>
+
+</div>
+<button class="floating-ai">
+
+    <i data-lucide="sparkles"></i>
+
+</button>
+
+</body>
+</html>
