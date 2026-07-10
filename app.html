@@ -237,10 +237,20 @@
     </nav>
 
     <script>
-      lucide.createIcons();
+      // Ensure Lucide icons render reliably on mobile/Android.
+      const vxInitLucide = () => {
+        if (window.lucide && typeof window.lucide.createIcons === 'function') {
+          window.lucide.createIcons();
+        }
+      };
 
-      // Hide welcome card after first user message (future-proof: integrate with chat events)
-      // Current behavior: if input is used, we hide the welcome card.
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', vxInitLucide, { once: true });
+      } else {
+        vxInitLucide();
+      }
+
+      // Hide welcome card after first user message.
       const shell = document.querySelector('.vx-app-shell[data-page="chat"]');
       const welcome = document.getElementById('welcomeCard');
       const input = shell?.querySelector('.chat-input input');
@@ -254,6 +264,25 @@
         input.addEventListener('keydown', (e) => {
           if (e.key && e.key.length === 1) hideOnce();
         });
+      }
+
+      // Re-run Lucide icons if dynamic content is injected later on this page.
+      const vxObserveAndRecreateIcons = () => {
+        const target = document.body;
+        if (!target || typeof MutationObserver === 'undefined') return;
+
+        const obs = new MutationObserver(() => {
+          vxInitLucide();
+        });
+
+        // Observe subtree changes (chat messages, suggestions, etc.)
+        obs.observe(target, { childList: true, subtree: true });
+      };
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', vxObserveAndRecreateIcons, { once: true });
+      } else {
+        vxObserveAndRecreateIcons();
       }
     </script>
     <script src="js/nav.js"></script>
