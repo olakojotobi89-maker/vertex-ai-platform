@@ -16,12 +16,19 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="css/components.css">
+
 <link rel="stylesheet" href="css/dashboard.css">
+
+<link rel="stylesheet" href="css/nav.css">
+
 <script src="https://unpkg.com/lucide@latest"></script>
+
 
 </head>
 
 <body>
+
+<div class="vx-app-shell" data-page="dashboard">
 
 <div class="phone">
 
@@ -453,6 +460,8 @@ lucide.createIcons();
 
 <script src="js/dashboard.js"></script>
 
+<script src="js/nav.js"></script>
+
 <section class="projects">
 
 <div class="section-title">
@@ -553,11 +562,99 @@ lucide.createIcons();
     </div>
 
 </div>
+<!-- Shared Navigation Shell (fixed header + sidebar + bottom nav) -->
 <button class="floating-ai">
 
     <i data-lucide="sparkles"></i>
 
 </button>
 
+<!-- SHARED NAVIGATION SHELL (top header + sidebar + bottom nav) -->
+
+<header class="vx-topbar" role="banner">
+  <button class="vx-icon-btn ripple" type="button" id="vxMenuBtn" aria-label="Open menu">
+    <i data-lucide="menu" aria-hidden="true"></i>
+  </button>
+
+  <div class="vx-topbar-title" aria-live="polite">Dashboard</div>
+
+  <div class="vx-topbar-right">
+    <button class="vx-icon-btn ripple" type="button" id="vxNotifyBtn" aria-label="Notifications">
+      <i data-lucide="bell" aria-hidden="true"></i>
+    </button>
+    <button class="vx-avatar-btn ripple" type="button" id="vxProfileBtn" aria-label="User profile">
+      <span class="vx-avatar">V</span>
+    </button>
+  </div>
+</header>
+
+<div class="vx-overlay" id="vxOverlay" hidden></div>
+
+<aside class="vx-sidebar" id="vxSidebar" aria-label="Sidebar Navigation" aria-hidden="true">
+  <div class="vx-sidebar-header">
+    <img class="vx-sidebar-logo" src="logo.png" alt="Vertex AI" />
+    <div>
+      <h2>Vertex AI</h2>
+      <p>Powered by Visual Vertex Technology Company</p>
+    </div>
+  </div>
+
+  <nav class="vx-sidebar-nav" aria-label="Sidebar">
+    <a class="vx-sidebar-link" href="dashboard.html" data-nav="dashboard">
+      <i data-lucide="layout-grid" aria-hidden="true"></i><span>Dashboard</span>
+    </a>
+    <a class="vx-sidebar-link" href="workspace.html" data-nav="workspace">
+      <i data-lucide="briefcase" aria-hidden="true"></i><span>Workspace</span>
+    </a>
+    <a class="vx-sidebar-link" href="app.html" data-nav="chat">
+      <i data-lucide="message-square" aria-hidden="true"></i><span>AI Chat</span>
+    </a>
+    <a class="vx-sidebar-link" href="profile.html" data-nav="profile">
+      <i data-lucide="user" aria-hidden="true"></i><span>Profile</span>
+    </a>
+    <a class="vx-sidebar-link" href="settings.html" data-nav="settings">
+      <i data-lucide="settings" aria-hidden="true"></i><span>Settings</span>
+    </a>
+    <a class="vx-sidebar-link" href="#" data-nav="help">
+      <i data-lucide="help-circle" aria-hidden="true"></i><span>Help &amp; Support</span>
+    </a>
+    <a class="vx-sidebar-link" href="#" data-nav="logout">
+      <i data-lucide="log-out" aria-hidden="true"></i><span>Logout</span>
+    </a>
+  </nav>
+
+  <div class="vx-sidebar-footer">
+    <div class="vx-app-version">Vertex AI v1.0</div>
+  </div>
+</aside>
+
+<nav class="vx-bottom-nav" aria-label="Bottom Navigation">
+  <div class="vx-bottom-nav-inner">
+    <a class="vx-bottom-item ripple" href="dashboard.html" data-bottom="dashboard">
+      <i data-lucide="home" aria-hidden="true"></i>
+      <span>Home</span>
+    </a>
+    <a class="vx-bottom-item ripple" href="workspace.html" data-bottom="workspace">
+      <i data-lucide="briefcase" aria-hidden="true"></i>
+      <span>Workspace</span>
+    </a>
+    <a class="vx-bottom-item ripple" href="app.html" data-bottom="chat">
+      <i data-lucide="message-square" aria-hidden="true"></i>
+      <span>AI Chat</span>
+    </a>
+    <a class="vx-bottom-item ripple" href="profile.html" data-bottom="profile">
+      <i data-lucide="user" aria-hidden="true"></i>
+      <span>Profile</span>
+    </a>
+    <a class="vx-bottom-item ripple" href="settings.html" data-bottom="settings">
+      <i data-lucide="settings" aria-hidden="true"></i>
+      <span>Settings</span>
+    </a>
+  </div>
+</nav>
+
+<script src="js/nav.js"></script>
+
+</div>
 </body>
 </html>

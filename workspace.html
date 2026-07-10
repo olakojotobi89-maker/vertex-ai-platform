@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Workspace • Vertex AI</title>
 
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,523 +19,562 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/workspace.css" />
+  <link rel="stylesheet" href="css/nav.css" />
 </head>
 
 <body>
-  <main class="page" id="workspacePage">
-    <!-- TOP HEADER (Sticky) -->
-    <header class="topbar" role="banner">
-      <button class="icon-btn ripple" type="button" id="backBtn" aria-label="Back">
-        <i data-lucide="arrow-left" aria-hidden="true"></i>
+  <div class="vx-app-shell" data-page="workspace">
+    <!-- TOP HEADER (Shared / Fixed) -->
+    <header class="vx-topbar" role="banner">
+      <button class="vx-icon-btn ripple" type="button" id="vxMenuBtn" aria-label="Open menu">
+        <i data-lucide="menu" aria-hidden="true"></i>
       </button>
 
-      <div class="brand" aria-label="Workspace">
-        <div class="brand-mark" aria-hidden="true">
-          <span class="brand-dot"></span>
-          <span class="brand-ring"></span>
-        </div>
-        <div class="brand-meta">
-          <div class="brand-title">Vertex AI</div>
-          <div class="brand-sub">Visual Vertex Technology Company</div>
-        </div>
-      </div>
+      <div class="vx-topbar-title" aria-live="polite">Workspace</div>
 
-      <div class="topbar-right">
-        <div class="pill" id="categoryPill" aria-label="Business Category">Technology Company</div>
-
-        <button class="icon-btn ripple" type="button" id="notifyBtn" aria-label="Notifications">
+      <div class="vx-topbar-right">
+        <button class="vx-icon-btn ripple" type="button" id="vxNotifyBtn" aria-label="Notifications">
           <i data-lucide="bell" aria-hidden="true"></i>
         </button>
-        <button class="icon-btn ripple" type="button" id="settingsBtn" aria-label="Settings">
-          <i data-lucide="settings" aria-hidden="true"></i>
+        <button class="vx-avatar-btn ripple" type="button" id="vxProfileBtn" aria-label="User profile">
+          <span class="vx-avatar">V</span>
         </button>
       </div>
     </header>
 
-    <div class="container" role="region" aria-label="Workspace content">
-      <!-- BUSINESS HEALTH CARD -->
-      <section class="card health-card" aria-label="Business Health">
-        <div class="health-left">
-          <div class="card-kicker">Business Health</div>
-          <h2 class="card-title">AI command center status</h2>
-          <p class="card-sub">Your business is growing steadily.</p>
-        </div>
+    <div class="vx-overlay" id="vxOverlay" hidden></div>
 
-        <div class="health-right">
-          <div class="health-progress" role="img" aria-label="Business Health Score">
-            <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
-              <defs>
-                <linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0%" stop-color="#E11D2E" stop-opacity="1" />
-                  <stop offset="100%" stop-color="#FF5A5F" stop-opacity="1" />
-                </linearGradient>
-              </defs>
-              <circle class="ring-bg" cx="60" cy="60" r="48" />
-              <circle class="ring-fg" cx="60" cy="60" r="48" />
-            </svg>
-            <div class="health-score">
-              <span class="health-score-value" id="healthScoreText">92%</span>
-              <span class="health-score-label" id="healthStatusText">Healthy Business</span>
-            </div>
-          </div>
-
-          <div class="health-status">
-            <div class="status-chip" id="healthStatusChip">Healthy</div>
-            <div class="ai-chip">AI Insight</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- QUICK ACTION GRID -->
-      <section class="card actions" aria-label="Quick Actions">
-        <div class="section-head">
-          <div>
-            <div class="card-kicker">Quick Actions</div>
-            <h3 class="card-title small">Move faster</h3>
-          </div>
-          <a class="link" href="#" aria-label="View all actions">View all</a>
-        </div>
-
-        <div class="grid grid-2" id="quickActionsGrid">
-          <button class="action-tile ripple" type="button" data-action="chat">
-            <i data-lucide="message-circle" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Continue AI Chat</div>
-              <div class="action-sub">Resume conversation</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="plan">
-            <i data-lucide="file-text" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Business Plan</div>
-              <div class="action-sub">Track milestones</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="marketing">
-            <i data-lucide="megaphone" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Marketing</div>
-              <div class="action-sub">Create campaigns</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="forecast">
-            <i data-lucide="chart-line" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Financial Forecast</div>
-              <div class="action-sub">Revenue & expenses</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="documents">
-            <i data-lucide="folder" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Documents</div>
-              <div class="action-sub">Uploads & files</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="tasks">
-            <i data-lucide="check-square" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Tasks</div>
-              <div class="action-sub">Your workflow</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="invoices">
-            <i data-lucide="receipt" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Invoices</div>
-              <div class="action-sub">Billing & payments</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="team">
-            <i data-lucide="users" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Team</div>
-              <div class="action-sub">Roles & access</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="analytics">
-            <i data-lucide="activity" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Analytics</div>
-              <div class="action-sub">Performance overview</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-
-          <button class="action-tile ripple" type="button" data-action="calendar">
-            <i data-lucide="calendar" aria-hidden="true"></i>
-            <div class="action-meta">
-              <div class="action-title">Calendar</div>
-              <div class="action-sub">Deadlines & plans</div>
-            </div>
-            <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
-          </button>
-        </div>
-      </section>
-
-      <!-- TODAY'S AI INSIGHT -->
-      <section class="card insight" aria-label="Today's AI Insight">
-        <div class="insight-left">
-          <div class="insight-icon" aria-hidden="true">
-            <i data-lucide="sparkles"></i>
-          </div>
-          <div>
-            <div class="card-kicker">Today's AI Insight</div>
-            <h3 class="card-title">AI Recommendation</h3>
-            <p class="insight-text" id="aiRecommendation">
-              Consider launching an online course to increase recurring revenue.
-            </p>
-          </div>
-        </div>
-
-        <div class="insight-actions">
-          <button class="btn btn-primary ripple" type="button" id="continueWithAI">
-            Continue with AI
-            <i data-lucide="arrow-right" class="btn-icon" aria-hidden="true"></i>
-          </button>
-          <div class="micro">Personalized for this workspace • v1</div>
-        </div>
-      </section>
-
-      <!-- RECENT ACTIVITY -->
-      <section class="card" aria-label="Recent Activity">
-        <div class="section-head">
-          <div>
-            <div class="card-kicker">Recent Activity</div>
-            <h3 class="card-title small">What changed</h3>
-          </div>
-          <button class="link ripple" type="button" id="refreshActivity" aria-label="Refresh activity">Refresh</button>
-        </div>
-
-        <ol class="timeline" id="activityTimeline">
-          <li class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-body">
-              <div class="timeline-title">Business Plan updated</div>
-              <div class="timeline-sub">Vertex AI adjusted your milestones and budgets.</div>
-            </div>
-            <div class="timeline-time">Just now</div>
-          </li>
-          <li class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-body">
-              <div class="timeline-title">Document uploaded</div>
-              <div class="timeline-sub">Uploaded “Q2 Strategy Deck”.</div>
-            </div>
-            <div class="timeline-time">2h</div>
-          </li>
-          <li class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-body">
-              <div class="timeline-title">Marketing campaign created</div>
-              <div class="timeline-sub">New campaign targeting warm leads.</div>
-            </div>
-            <div class="timeline-time">Yesterday</div>
-          </li>
-          <li class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-body">
-              <div class="timeline-title">AI conversation continued</div>
-              <div class="timeline-sub">Drafted email sequence for onboarding.</div>
-            </div>
-            <div class="timeline-time">2d</div>
-          </li>
-          <li class="timeline-item">
-            <span class="timeline-dot" aria-hidden="true"></span>
-            <div class="timeline-body">
-              <div class="timeline-title">Task completed</div>
-              <div class="timeline-sub">Revenue forecast model finalized.</div>
-            </div>
-            <div class="timeline-time">3d</div>
-          </li>
-        </ol>
-      </section>
-
-      <!-- UPCOMING TASKS -->
-      <section class="card tasks" aria-label="Upcoming Tasks">
-        <div class="section-head">
-          <div>
-            <div class="card-kicker">Upcoming Tasks</div>
-            <h3 class="card-title small">Today</h3>
-          </div>
-          <button class="link ripple" type="button" id="openWorkspaceModal" aria-label="Create a new workspace">Create</button>
-        </div>
-
-        <div class="task-groups">
-          <div class="task-group">
-            <div class="task-group-title">Today's tasks</div>
-            <ul class="checklist" id="todayTasks">
-              <!-- JS renders -->
-            </ul>
-          </div>
-
-          <div class="task-group">
-            <div class="task-group-title">Pending tasks</div>
-            <ul class="checklist" id="pendingTasks">
-              <!-- JS renders -->
-            </ul>
-          </div>
-
-          <div class="task-group">
-            <div class="task-group-title">Completed tasks</div>
-            <ul class="checklist" id="completedTasks">
-              <!-- JS renders -->
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <!-- BUSINESS METRICS -->
-      <section class="card metrics" aria-label="Business Metrics">
-        <div class="section-head">
-          <div>
-            <div class="card-kicker">Business Metrics</div>
-            <h3 class="card-title small">Live pulse</h3>
-          </div>
-          <div class="micro" id="metricsUpdatedAt">Updated just now</div>
-        </div>
-
-        <div class="metrics-grid" id="metricsGrid">
-          <div class="metric-tile">
-            <div class="metric-top"><i data-lucide="trending-up" aria-hidden="true"></i><span>Revenue</span></div>
-            <div class="metric-value" data-animate="currency" data-target="128400">$128.4k</div>
-            <div class="metric-sub">+12.4% WoW</div>
-          </div>
-          <div class="metric-tile">
-            <div class="metric-top"><i data-lucide="trending-down" aria-hidden="true"></i><span>Expenses</span></div>
-            <div class="metric-value" data-animate="currency" data-target="61200">$61.2k</div>
-            <div class="metric-sub">-4.1% WoW</div>
-          </div>
-          <div class="metric-tile">
-            <div class="metric-top"><i data-lucide="users" aria-hidden="true"></i><span>Customers</span></div>
-            <div class="metric-value" data-animate="number" data-target="2840">2,840</div>
-            <div class="metric-sub">+6.3% MoM</div>
-          </div>
-          <div class="metric-tile">
-            <div class="metric-top"><i data-lucide="arrow-up-right" aria-hidden="true"></i><span>Growth</span></div>
-            <div class="metric-value" data-animate="percent" data-target="18">18%</div>
-            <div class="metric-sub">AI forecast</div>
-          </div>
-          <div class="metric-tile">
-            <div class="metric-top"><i data-lucide="file" aria-hidden="true"></i><span>Documents</span></div>
-            <div class="metric-value" data-animate="number" data-target="47">47</div>
-            <div class="metric-sub">New: 6</div>
-          </div>
-          <div class="metric-tile">
-            <div class="metric-top"><i data-lucide="check-circle" aria-hidden="true"></i><span>Tasks</span></div>
-            <div class="metric-value" data-animate="number" data-target="128">128</div>
-            <div class="metric-sub">Done: 71</div>
-          </div>
-        </div>
-      </section>
-
-      <!-- DOCUMENT PREVIEW -->
-      <section class="card documents" aria-label="Document Preview">
-        <div class="section-head">
-          <div>
-            <div class="card-kicker">Documents</div>
-            <h3 class="card-title small">Recent uploads</h3>
-          </div>
-          <label class="upload" for="fileUpload">
-            <input id="fileUpload" type="file" accept="*/*" hidden />
-            <span class="upload-icon" aria-hidden="true"><i data-lucide="upload"></i></span>
-            <span class="upload-text">Upload</span>
-          </label>
-        </div>
-
-        <div class="file-grid" id="documentGrid">
-          <div class="file-card">
-            <div class="file-left">
-              <div class="file-icon" aria-hidden="true"><i data-lucide="file-text"></i></div>
-              <div>
-                <div class="file-name">Q2 Strategy Deck</div>
-                <div class="file-meta">PDF • 2.4MB</div>
-              </div>
-            </div>
-            <button class="file-open ripple" type="button" data-file="strategy">Open</button>
-          </div>
-
-          <div class="file-card">
-            <div class="file-left">
-              <div class="file-icon" aria-hidden="true"><i data-lucide="database"></i></div>
-              <div>
-                <div class="file-name">Forecast Model</div>
-                <div class="file-meta">XLSX • 1.1MB</div>
-              </div>
-            </div>
-            <button class="file-open ripple" type="button" data-file="forecast">Open</button>
-          </div>
-
-          <div class="file-card">
-            <div class="file-left">
-              <div class="file-icon" aria-hidden="true"><i data-lucide="bar-chart-3"></i></div>
-              <div>
-                <div class="file-name">Marketing Summary</div>
-                <div class="file-meta">DOCX • 0.9MB</div>
-              </div>
-            </div>
-            <button class="file-open ripple" type="button" data-file="marketing">Open</button>
-          </div>
-        </div>
-      </section>
-
-      <!-- TEAM SECTION -->
-      <section class="card team" aria-label="Team">
-        <div class="section-head">
-          <div>
-            <div class="card-kicker">Team</div>
-            <h3 class="card-title small">Members</h3>
-          </div>
-          <button class="btn btn-secondary ripple" type="button" id="inviteMemberBtn">
-            Invite Member
-            <i data-lucide="user-plus" class="btn-icon" aria-hidden="true"></i>
-          </button>
-        </div>
-
-        <div class="team-list" id="teamList">
-          <div class="member">
-            <div class="avatar" aria-hidden="true"><span>V</span></div>
-            <div class="member-meta">
-              <div class="member-name">Victoria Lee</div>
-              <div class="member-role">Founder • Strategy</div>
-            </div>
-            <span class="online" aria-label="Online" title="Online"></span>
-          </div>
-
-          <div class="member">
-            <div class="avatar" aria-hidden="true"><span>A</span></div>
-            <div class="member-meta">
-              <div class="member-name">Aiden Park</div>
-              <div class="member-role">Growth • Marketing</div>
-            </div>
-            <span class="online" aria-label="Online" title="Online"></span>
-          </div>
-
-          <div class="member">
-            <div class="avatar" aria-hidden="true"><span>S</span></div>
-            <div class="member-meta">
-              <div class="member-name">Sophia Tran</div>
-              <div class="member-role">Finance • Ops</div>
-            </div>
-            <span class="online offline" aria-label="Offline" title="Offline"></span>
-          </div>
-        </div>
-      </section>
-    </div>
-
-    <!-- FLOATING AI BUTTON (bottom-right) -->
-    <button class="floating-ai ripple" type="button" id="floatingAI" aria-label="Open AI Chat">
-      <i data-lucide="sparkles" aria-hidden="true"></i>
-      <span class="sr-only">Open AI Chat</span>
-    </button>
-
-    <!-- BOTTOM NAVIGATION (fixed) -->
-    <nav class="bottom-nav" aria-label="Bottom Navigation">
-      <a class="nav-item ripple is-active" href="dashboard.html" aria-label="Dashboard">
-        <i data-lucide="layout-grid" aria-hidden="true"></i>
-        <span>Dashboard</span>
-      </a>
-      <a class="nav-item ripple" href="workspace.html" aria-label="Workspace">
-        <i data-lucide="briefcase" aria-hidden="true"></i>
-        <span>Workspace</span>
-      </a>
-      <a class="nav-item ripple" href="#" id="navAIChat" aria-label="AI Chat">
-        <i data-lucide="message-square" aria-hidden="true"></i>
-        <span>AI Chat</span>
-      </a>
-      <a class="nav-item ripple" href="#" id="navDocuments" aria-label="Documents">
-        <i data-lucide="folder" aria-hidden="true"></i>
-        <span>Documents</span>
-      </a>
-      <a class="nav-item ripple" href="profile.html" aria-label="Profile">
-        <i data-lucide="user" aria-hidden="true"></i>
-        <span>Profile</span>
-      </a>
-    </nav>
-
-    <!-- WORKSPACE MODAL (Create Workspace) -->
-    <div class="modal-backdrop" id="workspaceModalBackdrop" hidden></div>
-    <div class="modal" id="workspaceModal" role="dialog" aria-modal="true" aria-labelledby="workspaceModalTitle" hidden>
-      <div class="modal-header">
+    <aside class="vx-sidebar" id="vxSidebar" aria-label="Sidebar Navigation" aria-hidden="true">
+      <div class="vx-sidebar-header">
+        <img class="vx-sidebar-logo" src="logo.png" alt="Vertex AI" />
         <div>
-          <div class="card-kicker">Create Workspace</div>
-          <h3 class="modal-title" id="workspaceModalTitle">New business workspace</h3>
+          <h2>Vertex AI</h2>
+          <p>Powered by Visual Vertex Technology Company</p>
         </div>
-        <button class="icon-btn ripple" type="button" id="closeWorkspaceModal" aria-label="Close modal">
-          <i data-lucide="x" aria-hidden="true"></i>
-        </button>
       </div>
 
-      <form class="modal-body" id="workspaceForm">
-        <label class="field">
-          <span class="field-label">Workspace Name</span>
-          <input class="field-input" name="workspaceName" type="text" placeholder="e.g., Vertex Commerce" required minlength="2" />
-        </label>
+      <nav class="vx-sidebar-nav" aria-label="Sidebar">
+        <a class="vx-sidebar-link" href="dashboard.html" data-nav="dashboard">
+          <i data-lucide="layout-grid" aria-hidden="true"></i><span>Dashboard</span>
+        </a>
+        <a class="vx-sidebar-link" href="workspace.html" data-nav="workspace">
+          <i data-lucide="briefcase" aria-hidden="true"></i><span>Workspace</span>
+        </a>
+        <a class="vx-sidebar-link" href="app.html" data-nav="chat">
+          <i data-lucide="message-square" aria-hidden="true"></i><span>AI Chat</span>
+        </a>
+        <a class="vx-sidebar-link" href="profile.html" data-nav="profile">
+          <i data-lucide="user" aria-hidden="true"></i><span>Profile</span>
+        </a>
+        <a class="vx-sidebar-link" href="settings.html" data-nav="settings">
+          <i data-lucide="settings" aria-hidden="true"></i><span>Settings</span>
+        </a>
+        <a class="vx-sidebar-link" href="#" data-nav="help">
+          <i data-lucide="help-circle" aria-hidden="true"></i><span>Help &amp; Support</span>
+        </a>
+        <a class="vx-sidebar-link" href="#" data-nav="logout">
+          <i data-lucide="log-out" aria-hidden="true"></i><span>Logout</span>
+        </a>
+      </nav>
 
-        <label class="field">
-          <span class="field-label">Business Type</span>
-          <input class="field-input" name="businessType" type="text" placeholder="e.g., SaaS" required minlength="2" />
-        </label>
+      <div class="vx-sidebar-footer">
+        <div class="vx-app-version">Vertex AI v1.0</div>
+      </div>
+    </aside>
 
-        <label class="field">
-          <span class="field-label">Industry</span>
-          <input class="field-input" name="industry" type="text" placeholder="e.g., AI Automation" required minlength="2" />
-        </label>
+    <!-- EXISTING PAGE CONTENT (kept) -->
+    <main class="vx-content" role="main" aria-label="Workspace">
+      <main class="page" id="workspacePage">
+        <!-- TOP HEADER (Sticky) - kept content below (original back header removed to avoid duplicate shells) -->
+        <!-- NOTE: Existing cards, sections, ids, and classes below are preserved. -->
 
-        <label class="field">
-          <span class="field-label">Business Stage</span>
-          <select class="field-input" name="businessStage" required>
-            <option value="" selected disabled>Select stage</option>
-            <option>Idea</option>
-            <option>Early</option>
-            <option>Growth</option>
-            <option>Mature</option>
-          </select>
-        </label>
+        <div class="container" role="region" aria-label="Workspace content">
+          <!-- BUSINESS HEALTH CARD -->
+          <section class="card health-card" aria-label="Business Health">
+            <div class="health-left">
+              <div class="card-kicker">Business Health</div>
+              <h2 class="card-title">AI command center status</h2>
+              <p class="card-sub">Your business is growing steadily.</p>
+            </div>
 
-        <label class="field">
-          <span class="field-label">Business Goal</span>
-          <input class="field-input" name="businessGoal" type="text" placeholder="e.g., Increase ARR" required minlength="2" />
-        </label>
+            <div class="health-right">
+              <div class="health-progress" role="img" aria-label="Business Health Score">
+                <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="ringGradient" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#E11D2E" stop-opacity="1" />
+                      <stop offset="100%" stop-color="#FF5A5F" stop-opacity="1" />
+                    </linearGradient>
+                  </defs>
+                  <circle class="ring-bg" cx="60" cy="60" r="48" />
+                  <circle class="ring-fg" cx="60" cy="60" r="48" />
+                </svg>
+                <div class="health-score">
+                  <span class="health-score-value" id="healthScoreText">92%</span>
+                  <span class="health-score-label" id="healthStatusText">Healthy Business</span>
+                </div>
+              </div>
 
-        <div class="modal-actions">
-          <button class="btn btn-secondary ripple" type="button" id="cancelWorkspace" data-close>Cancel</button>
-          <button class="btn btn-primary ripple" type="submit">
-            Create Workspace
-            <i data-lucide="sparkles" class="btn-icon" aria-hidden="true"></i>
-          </button>
+              <div class="health-status">
+                <div class="status-chip" id="healthStatusChip">Healthy</div>
+                <div class="ai-chip">AI Insight</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- QUICK ACTION GRID -->
+          <section class="card actions" aria-label="Quick Actions">
+            <div class="section-head">
+              <div>
+                <div class="card-kicker">Quick Actions</div>
+                <h3 class="card-title small">Move faster</h3>
+              </div>
+              <a class="link" href="#" aria-label="View all actions">View all</a>
+            </div>
+
+            <div class="grid grid-2" id="quickActionsGrid">
+              <button class="action-tile ripple" type="button" data-action="chat">
+                <i data-lucide="message-circle" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Continue AI Chat</div>
+                  <div class="action-sub">Resume conversation</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="plan">
+                <i data-lucide="file-text" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Business Plan</div>
+                  <div class="action-sub">Track milestones</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="marketing">
+                <i data-lucide="megaphone" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Marketing</div>
+                  <div class="action-sub">Create campaigns</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="forecast">
+                <i data-lucide="chart-line" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Financial Forecast</div>
+                  <div class="action-sub">Revenue & expenses</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="documents">
+                <i data-lucide="folder" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Documents</div>
+                  <div class="action-sub">Uploads & files</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="tasks">
+                <i data-lucide="check-square" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Tasks</div>
+                  <div class="action-sub">Your workflow</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="invoices">
+                <i data-lucide="receipt" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Invoices</div>
+                  <div class="action-sub">Billing & payments</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="team">
+                <i data-lucide="users" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Team</div>
+                  <div class="action-sub">Roles & access</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="analytics">
+                <i data-lucide="activity" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Analytics</div>
+                  <div class="action-sub">Performance overview</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+
+              <button class="action-tile ripple" type="button" data-action="calendar">
+                <i data-lucide="calendar" aria-hidden="true"></i>
+                <div class="action-meta">
+                  <div class="action-title">Calendar</div>
+                  <div class="action-sub">Deadlines & plans</div>
+                </div>
+                <i class="action-arrow" data-lucide="arrow-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </section>
+
+          <!-- TODAY'S AI INSIGHT -->
+          <section class="card insight" aria-label="Today's AI Insight">
+            <div class="insight-left">
+              <div class="insight-icon" aria-hidden="true">
+                <i data-lucide="sparkles"></i>
+              </div>
+              <div>
+                <div class="card-kicker">Today's AI Insight</div>
+                <h3 class="card-title">AI Recommendation</h3>
+                <p class="insight-text" id="aiRecommendation">
+                  Consider launching an online course to increase recurring revenue.
+                </p>
+              </div>
+            </div>
+
+            <div class="insight-actions">
+              <button class="btn btn-primary ripple" type="button" id="continueWithAI">
+                Continue with AI
+                <i data-lucide="arrow-right" class="btn-icon" aria-hidden="true"></i>
+              </button>
+              <div class="micro">Personalized for this workspace • v1</div>
+            </div>
+          </section>
+
+          <!-- RECENT ACTIVITY -->
+          <section class="card" aria-label="Recent Activity">
+            <div class="section-head">
+              <div>
+                <div class="card-kicker">Recent Activity</div>
+                <h3 class="card-title small">What changed</h3>
+              </div>
+              <button class="link ripple" type="button" id="refreshActivity" aria-label="Refresh activity">Refresh</button>
+            </div>
+
+            <ol class="timeline" id="activityTimeline">
+              <li class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <div class="timeline-title">Business Plan updated</div>
+                  <div class="timeline-sub">Vertex AI adjusted your milestones and budgets.</div>
+                </div>
+                <div class="timeline-time">Just now</div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <div class="timeline-title">Document uploaded</div>
+                  <div class="timeline-sub">Uploaded “Q2 Strategy Deck”.</div>
+                </div>
+                <div class="timeline-time">2h</div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <div class="timeline-title">Marketing campaign created</div>
+                  <div class="timeline-sub">New campaign targeting warm leads.</div>
+                </div>
+                <div class="timeline-time">Yesterday</div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <div class="timeline-title">AI conversation continued</div>
+                  <div class="timeline-sub">Drafted email sequence for onboarding.</div>
+                </div>
+                <div class="timeline-time">2d</div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot" aria-hidden="true"></span>
+                <div class="timeline-body">
+                  <div class="timeline-title">Task completed</div>
+                  <div class="timeline-sub">Revenue forecast model finalized.</div>
+                </div>
+                <div class="timeline-time">3d</div>
+              </li>
+            </ol>
+          </section>
+
+          <!-- UPCOMING TASKS -->
+          <section class="card tasks" aria-label="Upcoming Tasks">
+            <div class="section-head">
+              <div>
+                <div class="card-kicker">Upcoming Tasks</div>
+                <h3 class="card-title small">Today</h3>
+              </div>
+              <button class="link ripple" type="button" id="openWorkspaceModal" aria-label="Create a new workspace">Create</button>
+            </div>
+
+            <div class="task-groups">
+              <div class="task-group">
+                <div class="task-group-title">Today's tasks</div>
+                <ul class="checklist" id="todayTasks">
+                  <!-- JS renders -->
+                </ul>
+              </div>
+
+              <div class="task-group">
+                <div class="task-group-title">Pending tasks</div>
+                <ul class="checklist" id="pendingTasks">
+                  <!-- JS renders -->
+                </ul>
+              </div>
+
+              <div class="task-group">
+                <div class="task-group-title">Completed tasks</div>
+                <ul class="checklist" id="completedTasks">
+                  <!-- JS renders -->
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          <!-- BUSINESS METRICS -->
+          <section class="card metrics" aria-label="Business Metrics">
+            <div class="section-head">
+              <div>
+                <div class="card-kicker">Business Metrics</div>
+                <h3 class="card-title small">Live pulse</h3>
+              </div>
+              <div class="micro" id="metricsUpdatedAt">Updated just now</div>
+            </div>
+
+            <div class="metrics-grid" id="metricsGrid">
+              <div class="metric-tile">
+                <div class="metric-top"><i data-lucide="trending-up" aria-hidden="true"></i><span>Revenue</span></div>
+                <div class="metric-value" data-animate="currency" data-target="128400">$128.4k</div>
+                <div class="metric-sub">+12.4% WoW</div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-top"><i data-lucide="trending-down" aria-hidden="true"></i><span>Expenses</span></div>
+                <div class="metric-value" data-animate="currency" data-target="61200">$61.2k</div>
+                <div class="metric-sub">-4.1% WoW</div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-top"><i data-lucide="users" aria-hidden="true"></i><span>Customers</span></div>
+                <div class="metric-value" data-animate="number" data-target="2840">2,840</div>
+                <div class="metric-sub">+6.3% MoM</div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-top"><i data-lucide="arrow-up-right" aria-hidden="true"></i><span>Growth</span></div>
+                <div class="metric-value" data-animate="percent" data-target="18">18%</div>
+                <div class="metric-sub">AI forecast</div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-top"><i data-lucide="file" aria-hidden="true"></i><span>Documents</span></div>
+                <div class="metric-value" data-animate="number" data-target="47">47</div>
+                <div class="metric-sub">New: 6</div>
+              </div>
+              <div class="metric-tile">
+                <div class="metric-top"><i data-lucide="check-circle" aria-hidden="true"></i><span>Tasks</span></div>
+                <div class="metric-value" data-animate="number" data-target="128">128</div>
+                <div class="metric-sub">Done: 71</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- DOCUMENT PREVIEW -->
+          <section class="card documents" aria-label="Document Preview">
+            <div class="section-head">
+              <div>
+                <div class="card-kicker">Documents</div>
+                <h3 class="card-title small">Recent uploads</h3>
+              </div>
+              <label class="upload" for="fileUpload">
+                <input id="fileUpload" type="file" accept="*/*" hidden />
+                <span class="upload-icon" aria-hidden="true"><i data-lucide="upload"></i></span>
+                <span class="upload-text">Upload</span>
+              </label>
+            </div>
+
+            <div class="file-grid" id="documentGrid">
+              <div class="file-card">
+                <div class="file-left">
+                  <div class="file-icon" aria-hidden="true"><i data-lucide="file-text"></i></div>
+                  <div>
+                    <div class="file-name">Q2 Strategy Deck</div>
+                    <div class="file-meta">PDF • 2.4MB</div>
+                  </div>
+                </div>
+                <button class="file-open ripple" type="button" data-file="strategy">Open</button>
+              </div>
+
+              <div class="file-card">
+                <div class="file-left">
+                  <div class="file-icon" aria-hidden="true"><i data-lucide="database"></i></div>
+                  <div>
+                    <div class="file-name">Forecast Model</div>
+                    <div class="file-meta">XLSX • 1.1MB</div>
+                  </div>
+                </div>
+                <button class="file-open ripple" type="button" data-file="forecast">Open</button>
+              </div>
+
+              <div class="file-card">
+                <div class="file-left">
+                  <div class="file-icon" aria-hidden="true"><i data-lucide="bar-chart-3"></i></div>
+                  <div>
+                    <div class="file-name">Marketing Summary</div>
+                    <div class="file-meta">DOCX • 0.9MB</div>
+                  </div>
+                </div>
+                <button class="file-open ripple" type="button" data-file="marketing">Open</button>
+              </div>
+            </div>
+          </section>
+
+          <!-- TEAM SECTION -->
+          <section class="card team" aria-label="Team">
+            <div class="section-head">
+              <div>
+                <div class="card-kicker">Team</div>
+                <h3 class="card-title small">Members</h3>
+              </div>
+              <button class="btn btn-secondary ripple" type="button" id="inviteMemberBtn">
+                Invite Member
+                <i data-lucide="user-plus" class="btn-icon" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <div class="team-list" id="teamList">
+              <div class="member">
+                <div class="avatar" aria-hidden="true"><span>V</span></div>
+                <div class="member-meta">
+                  <div class="member-name">Victoria Lee</div>
+                  <div class="member-role">Founder • Strategy</div>
+                </div>
+                <span class="online" aria-label="Online" title="Online"></span>
+              </div>
+
+              <div class="member">
+                <div class="avatar" aria-hidden="true"><span>A</span></div>
+                <div class="member-meta">
+                  <div class="member-name">Aiden Park</div>
+                  <div class="member-role">Growth • Marketing</div>
+                </div>
+                <span class="online" aria-label="Online" title="Online"></span>
+              </div>
+
+              <div class="member">
+                <div class="avatar" aria-hidden="true"><span>S</span></div>
+                <div class="member-meta">
+                  <div class="member-name">Sophia Tran</div>
+                  <div class="member-role">Finance • Ops</div>
+                </div>
+                <span class="online offline" aria-label="Offline" title="Offline"></span>
+              </div>
+            </div>
+          </section>
         </div>
 
-        <p class="micro api-note" aria-live="polite">
-          <!-- Future backend integration placeholder -->
-          API: workspace creation will be integrated with Node.js + Supabase.
-        </p>
-      </form>
-    </div>
+        <!-- WORKSPACE MODAL (Create Workspace) -->
+        <div class="modal-backdrop" id="workspaceModalBackdrop" hidden></div>
+        <div class="modal" id="workspaceModal" role="dialog" aria-modal="true" aria-labelledby="workspaceModalTitle" hidden>
+          <div class="modal-header">
+            <div>
+              <div class="card-kicker">Create Workspace</div>
+              <h3 class="modal-title" id="workspaceModalTitle">New business workspace</h3>
+            </div>
+            <button class="icon-btn ripple" type="button" id="closeWorkspaceModal" aria-label="Close modal">
+              <i data-lucide="x" aria-hidden="true"></i>
+            </button>
+          </div>
 
-    <!-- Lucide init -->
-    <script>
-      lucide.createIcons();
-    </script>
-    <script src="js/nav.js"></script>
-    <script src="js/workspace.js"></script>
-  </main>
+          <form class="modal-body" id="workspaceForm">
+            <label class="field">
+              <span class="field-label">Workspace Name</span>
+              <input class="field-input" name="workspaceName" type="text" placeholder="e.g., Vertex Commerce" required minlength="2" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Business Type</span>
+              <input class="field-input" name="businessType" type="text" placeholder="e.g., SaaS" required minlength="2" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Industry</span>
+              <input class="field-input" name="industry" type="text" placeholder="e.g., AI Automation" required minlength="2" />
+            </label>
+
+            <label class="field">
+              <span class="field-label">Business Stage</span>
+              <select class="field-input" name="businessStage" required>
+                <option value="" selected disabled>Select stage</option>
+                <option>Idea</option>
+                <option>Early</option>
+                <option>Growth</option>
+                <option>Mature</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span class="field-label">Business Goal</span>
+              <input class="field-input" name="businessGoal" type="text" placeholder="e.g., Increase ARR" required minlength="2" />
+            </label>
+
+            <div class="modal-actions">
+              <button class="btn btn-secondary ripple" type="button" id="cancelWorkspace" data-close>Cancel</button>
+              <button class="btn btn-primary ripple" type="submit">
+                Create Workspace
+                <i data-lucide="sparkles" class="btn-icon" aria-hidden="true"></i>
+              </button>
+            </div>
+
+            <p class="micro api-note" aria-live="polite">
+              <!-- Future backend integration placeholder -->
+              API: workspace creation will be integrated with Node.js + Supabase.
+            </p>
+          </form>
+        </div>
+
+        <!-- Floating AI button retained -->
+        <button class="floating-ai ripple" type="button" id="floatingAI" aria-label="Open AI Chat">
+          <i data-lucide="sparkles" aria-hidden="true"></i>
+          <span class="sr-only">Open AI Chat</span>
+        </button>
+      </main>
+
+      <!-- Bottom Navigation (Shared / Fixed) -->
+      <nav class="vx-bottom-nav" aria-label="Bottom Navigation">
+        <div class="vx-bottom-nav-inner">
+          <a class="vx-bottom-item ripple" href="dashboard.html" data-bottom="dashboard">
+            <i data-lucide="home" aria-hidden="true"></i>
+            <span>Home</span>
+          </a>
+          <a class="vx-bottom-item ripple" href="workspace.html" data-bottom="workspace">
+            <i data-lucide="briefcase" aria-hidden="true"></i>
+            <span>Workspace</span>
+          </a>
+          <a class="vx-bottom-item ripple" href="app.html" data-bottom="chat">
+            <i data-lucide="message-square" aria-hidden="true"></i>
+            <span>AI Chat</span>
+          </a>
+          <a class="vx-bottom-item ripple" href="profile.html" data-bottom="profile">
+            <i data-lucide="user" aria-hidden="true"></i>
+            <span>Profile</span>
+          </a>
+          <a class="vx-bottom-item ripple" href="settings.html" data-bottom="settings">
+            <i data-lucide="settings" aria-hidden="true"></i>
+            <span>Settings</span>
+          </a>
+        </div>
+      </nav>
+
+      <script>
+        lucide.createIcons();
+      </script>
+      <script src="js/nav.js"></script>
+      <script src="js/workspace.js"></script>
+    </main>
+  </div>
 </body>
 </html>
 

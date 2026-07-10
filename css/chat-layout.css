@@ -1,0 +1,86 @@
+/* Vertex AI — ChatGPT-like mobile layout fixes (mobile-first)
+   - Keeps existing markup & navigation
+   - Uses flexbox to ensure:
+     Header fixed
+     Chat messages scroll independently
+     Composer stays directly above bottom navigation
+*/
+
+/* Scope to AI chat page only */
+.vx-app-shell[data-page="chat"]{
+  /* Ensure the full shell participates in the flex layout */
+  display:flex;
+  flex-direction:column;
+  height:100vh;
+}
+
+/* Make the legacy .app container fit the remaining height */
+.vx-app-shell[data-page="chat"] .app{
+  /* .app is already max-width etc from css/app.css; we only add layout constraints */
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  min-height:0; /* important for scroll containers in flex */
+}
+
+/* Reduce the welcome card height by ~50% */
+.vx-app-shell[data-page="chat"] #welcomeCard{
+  margin:14px 18px;
+  padding:18px 18px;
+}
+
+.vx-app-shell[data-page="chat"] #welcomeCard .welcome-top{
+  width:56px;
+  height:56px;
+  margin-bottom:10px;
+}
+
+.vx-app-shell[data-page="chat"] #welcomeCard h1{
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+.vx-app-shell[data-page="chat"] #welcomeCard p{
+  display:none; /* compact greeting */
+}
+
+/* Chat message list area: ensure it scrolls */
+/* The legacy markup currently uses: <section id="chat"> ... </section>
+   We'll treat it as a scroll container and reserve space for the fixed composer. */
+.vx-app-shell[data-page="chat"] #chat{
+  flex:1;
+  overflow-y:auto;
+  padding:0 14px;
+  min-height:0;
+  padding-bottom: calc(92px + env(safe-area-inset-bottom)); /* space for composer + bottom nav */
+}
+
+/* Existing input is .chat-input and is position:fixed in css/app.css.
+   We override so it always sits directly above the bottom nav, and spans width. */
+.vx-app-shell[data-page="chat"] .chat-input{
+  /* bottom nav approx height is 75px + safe-area; composer should sit right above it */
+  bottom: calc(75px + 10px + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: 94%;
+  max-width: 430px;
+
+  border-radius: 22px;
+  padding: 10px 12px;
+}
+
+/* Keep chat composer full width of the container */
+.vx-app-shell[data-page="chat"] .chat-input input{
+  border-radius:16px;
+}
+
+/* When content grows, only #chat should scroll (header/composer/bottom nav fixed) */
+
+/* Optional: hide welcome card after first user message.
+   We add a small class toggle target; app.js can set it later.
+*/
+.vx-app-shell[data-page="chat"] #welcomeCard.is-hidden{
+  display:none !important;
+}
+

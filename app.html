@@ -1,364 +1,264 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<script src="https://unpkg.com/lucide@latest"></script>
-<meta charset="UTF-8">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vertex AI</title>
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-<title>Vertex AI</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="css/app.css">
-
+  <link rel="stylesheet" href="css/app.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/chat-layout.css">
 </head>
 
 <body>
-
-<div class="app">
-
-<header class="topbar">
-
-<button id="menuBtn">
-
-<i data-lucide="menu"></i>
-
-</button>
-
-<div class="logo">
-
-<img src="logo.png">
-
-<span>Vertex AI</span>
-
-</div>
-
-<button>
-
-<i data-lucide="bell"></i>
-
-</button>
-
-</header>
-
-<section class="welcome-card">
-
-<div class="welcome-top">
-
-<img src="logo.png">
-
-</div>
-
-<h3 id="greeting">
-
-Good Evening 👋
-
-</h3>
-
-<h1>
-
-What are we building today?
-
-</h1>
-
-<p>
-
-I'm ready to help you discover ideas, create plans and grow your business.
-
-</p>
-
-</section>
-
-
-
-<!-- Sidebar -->
- 
-
-<div class="overlay" id="overlay"></div>
-
-<aside class="sidebar" id="sidebar">
-
-<div class="sidebar-header">
-
-<img src="logo.png">
-
-<div>
-
-
-<h2>Vertex AI</h2>
-
-<p>Powered by Visual Vertex</p>
-
-</div>
-
-</div>
-
-<button class="new-chat">
-+ New Business Session</button>
-
-<div class="search-box">
-
-
-
-
-<i data-lucide="search"></i>
-
-<input
-type="text"
-placeholder="Search chats...">
-
-</div>
-
-</button>
-
-
-<div class="sidebar-section">
-
-<h4>Today</h4>
-
-<a class="active-chat">
-
-💬 POS Business
-
-</a>
-
-<a>
-
-💬 Marketing Strategy
-
-</a>
-
-</div>
-
-<div class="sidebar-section">
-
-<h4>Yesterday</h4>
-
-<a>
-
-💬 Restaurant Startup
-
-</a>
-
-<a>
-
-💬 Poultry Farm
-
-</a>
-
-</div>
-
-<div class="sidebar-section">
-
-<h4>Earlier</h4>
-
-<a>
-
-💬 Fashion Store
-
-</a>
-
-<a>
-
-💬 Logistics Company
-
-</a>
-
-</div>
-<div class="sidebar-section">
-
-<h4>Business Tools</h4>
-
-<a href="#">📄 Business Plan</a>
-
-<a href="#">📈 Marketing</a>
-
-<a href="#">💰 Funding</a>
-
-<a href="#">📊 Market Research</a>
-
-<a href="#">📑 SWOT Analysis</a>
-
-</div>
-
-<div class="sidebar-bottom">
-
-    <a href="dashboard.html">
-
-🏠 Dashboard
-
-</a>
-
-<a href="#">👤 Profile</a>
-
-<a href="#">⚙ Settings</a>
-
-<a href="#">🚪 Logout</a>
-
-</div>
-
-</aside>
-
-<section id="chat">
-
-<div class="ai-message">
-
-<div class="avatar">
-
-<img src="logo.png">
-
-</div>
-
-<div class="bubble">
-
-<h4>Vertex AI</h4>
-
-<p>
-
-Hello 👋
-
-I'm your AI Business Strategist.
-
-Tell me your business idea and I'll help you build it.
-
-</p>
-
-</div>
-
-</div>
-<div class="chat-input">
-
-<button>
-
-<i data-lucide="paperclip"></i>
-
-</button>
-
-<input
-
-placeholder="Ask Vertex AI...">
-
-<button>
-
-<i data-lucide="mic"></i>
-
-</button>
-
-<button class="send">
-
-<i data-lucide="arrow-up"></i>
-
-</button>
-
-</div>
-
-
-＋
-
-</button>
-
-<input
-
-type="text"
-
-placeholder="Ask Vertex AI...">
-
-<button>
-
-🎤
-
-</button>
-
-<button class="send">
-
-➜
-
-</button>
-
-</div>
-
-</div>
-
-<script src="js/app.js"></script>
-<script>
-
-lucide.createIcons();
-</script>
-<nav class="bottom-nav">
-
-<a class="active">
-
-<i data-lucide="house"></i>
-
-<span>Home</span>
-
-</a>
-
-<a>
-
-<i data-lucide="message-square"></i>
-
-<span>Chats</span>
-
-</a>
-
-<a>
-
-<i data-lucide="briefcase-business"></i>
-
-<span>Tools</span>
-
-</a>
-
-<a>
-
-<i data-lucide="user"></i>
-
-<span>Profile</span>
-
-</a>
-
-</nav>
-
-<div class="modal" id="newChatModal">
-
-<div class="modal-content">
-
-<h2>
-
-Start New Session
-
-</h2>
-
-<p>
-
-Choose what you'd like Vertex AI to help you with.
-
-</p>
-
-<button>💡 Business Idea</button>
-
-<button>📄 Business Plan</button>
-
-<button>📈 Marketing</button>
-
-<button>💰 Funding</button>
-
-<button id="closeModal">
-
-Cancel
-
-</button>
-
-</div>
-
-</div>
+  <div class="vx-app-shell" data-page="chat" style="display:flex;flex-direction:column;height:100vh;">
+    <!-- TOP HEADER (Fixed) -->
+    <header class="vx-topbar" role="banner">
+      <button class="vx-icon-btn ripple" type="button" id="vxMenuBtn" aria-label="Open menu">
+        <i data-lucide="menu" aria-hidden="true"></i>
+      </button>
+
+      <div class="vx-topbar-title" aria-live="polite">AI Chat</div>
+
+      <div class="vx-topbar-right">
+        <button class="vx-icon-btn ripple" type="button" id="vxNotifyBtn" aria-label="Notifications">
+          <i data-lucide="bell" aria-hidden="true"></i>
+        </button>
+        <button class="vx-avatar-btn ripple" type="button" id="vxProfileBtn" aria-label="User profile">
+          <span class="vx-avatar">V</span>
+        </button>
+      </div>
+    </header>
+
+    <div class="vx-overlay" id="vxOverlay" hidden></div>
+
+    <!-- Sliding Sidebar (shared) -->
+    <aside class="vx-sidebar" id="vxSidebar" aria-label="Sidebar Navigation" aria-hidden="true">
+      <div class="vx-sidebar-header">
+        <img class="vx-sidebar-logo" src="logo.png" alt="Vertex AI" />
+        <div>
+          <h2>Vertex AI</h2>
+          <p>Powered by Visual Vertex Technology Company</p>
+        </div>
+      </div>
+
+      <nav class="vx-sidebar-nav" aria-label="Sidebar">
+        <a class="vx-sidebar-link" href="dashboard.html" data-nav="dashboard">
+          <i data-lucide="layout-grid" aria-hidden="true"></i><span>Dashboard</span>
+        </a>
+        <a class="vx-sidebar-link" href="workspace.html" data-nav="workspace">
+          <i data-lucide="briefcase" aria-hidden="true"></i><span>Workspace</span>
+        </a>
+        <a class="vx-sidebar-link" href="app.html" data-nav="chat">
+          <i data-lucide="message-square" aria-hidden="true"></i><span>AI Chat</span>
+        </a>
+        <a class="vx-sidebar-link" href="profile.html" data-nav="profile">
+          <i data-lucide="user" aria-hidden="true"></i><span>Profile</span>
+        </a>
+        <a class="vx-sidebar-link" href="settings.html" data-nav="settings">
+          <i data-lucide="settings" aria-hidden="true"></i><span>Settings</span>
+        </a>
+        <a class="vx-sidebar-link" href="#" data-nav="help">
+          <i data-lucide="help-circle" aria-hidden="true"></i><span>Help &amp; Support</span>
+        </a>
+        <a class="vx-sidebar-link" href="#" data-nav="logout">
+          <i data-lucide="log-out" aria-hidden="true"></i><span>Logout</span>
+        </a>
+      </nav>
+
+      <div class="vx-sidebar-footer">
+        <div class="vx-app-version">Vertex AI v1.0</div>
+      </div>
+    </aside>
+
+    <!-- EXISTING PAGE CONTENT (kept) -->
+    <main class="vx-content" role="main" aria-label="AI Chat">
+      <div class="app">
+        <script>
+          // Keep legacy page behavior; shared navigation uses js/nav.js.
+        </script>
+        <header class="topbar">
+          <button id="menuBtn">
+            <i data-lucide="menu"></i>
+          </button>
+
+          <div class="logo">
+            <img src="logo.png">
+            <span>Vertex AI</span>
+          </div>
+
+          <button>
+            <i data-lucide="bell"></i>
+          </button>
+        </header>
+
+        <section class="welcome-card" id="welcomeCard">
+          <div class="welcome-top">
+            <img src="logo.png">
+          </div>
+
+          <h3 id="greeting">Good Evening 👋</h3>
+
+          <h1>What are we building today?</h1>
+
+          <p>
+            I'm ready to help you discover ideas, create plans and grow your business.
+          </p>
+        </section>
+
+        <!-- Sidebar (legacy) kept but visually superseded by shared sidebar -->
+        <div class="overlay" id="overlay"></div>
+
+        <aside class="sidebar" id="sidebar">
+          <div class="sidebar-header">
+            <img src="logo.png">
+            <div>
+              <h2>Vertex AI</h2>
+              <p>Powered by Visual Vertex</p>
+            </div>
+          </div>
+
+          <button class="new-chat">+ New Business Session</button>
+
+          <div class="search-box">
+            <i data-lucide="search"></i>
+            <input type="text" placeholder="Search chats...">
+          </div>
+
+          </button>
+
+          <div class="sidebar-section">
+            <h4>Today</h4>
+            <a class="active-chat">💬 POS Business</a>
+            <a>💬 Marketing Strategy</a>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Yesterday</h4>
+            <a>💬 Restaurant Startup</a>
+            <a>💬 Poultry Farm</a>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Earlier</h4>
+            <a>💬 Fashion Store</a>
+            <a>💬 Logistics Company</a>
+          </div>
+
+          <div class="sidebar-section">
+            <h4>Business Tools</h4>
+            <a href="#">📄 Business Plan</a>
+            <a href="#">📈 Marketing</a>
+            <a href="#">💰 Funding</a>
+            <a href="#">📊 Market Research</a>
+            <a href="#">📑 SWOT Analysis</a>
+          </div>
+
+          <div class="sidebar-bottom">
+            <a href="dashboard.html">🏠 Dashboard</a>
+            <a href="#">👤 Profile</a>
+            <a href="#">⚙ Settings</a>
+            <a href="#">🚪 Logout</a>
+          </div>
+        </aside>
+
+        <section id="chat">
+          <div class="ai-message">
+            <div class="avatar"><img src="logo.png"></div>
+            <div class="bubble">
+              <h4>Vertex AI</h4>
+              <p>
+                Hello 👋
+                I'm your AI Business Strategist.
+                Tell me your business idea and I'll help you build it.
+              </p>
+            </div>
+          </div>
+
+          <div class="chat-input">
+            <button><i data-lucide="paperclip"></i></button>
+            <input placeholder="Ask Vertex AI...">
+            <button><i data-lucide="mic"></i></button>
+            <button class="send"><i data-lucide="arrow-up"></i></button>
+          </div>
+        </section>
+
+
+        <!-- Fixed bottom composer spacing helper (layout fix) -->
+        <div style="height:92px"></div>
+
+      </div>
+
+      <!-- Existing modal kept -->
+      <div class="modal" id="newChatModal">
+        <div class="modal-content">
+          <h2>Start New Session</h2>
+          <p>
+            Choose what you'd like Vertex AI to help you with.
+          </p>
+          <button>💡 Business Idea</button>
+          <button>📄 Business Plan</button>
+          <button>📈 Marketing</button>
+          <button>💰 Funding</button>
+          <button id="closeModal">Cancel</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- Bottom Navigation (shared) -->
+    <nav class="vx-bottom-nav" aria-label="Bottom Navigation">
+      <div class="vx-bottom-nav-inner">
+        <a class="vx-bottom-item ripple" href="dashboard.html" data-bottom="dashboard">
+          <i data-lucide="home" aria-hidden="true"></i>
+          <span>Home</span>
+        </a>
+        <a class="vx-bottom-item ripple" href="workspace.html" data-bottom="workspace">
+          <i data-lucide="briefcase" aria-hidden="true"></i>
+          <span>Workspace</span>
+        </a>
+        <a class="vx-bottom-item ripple" href="app.html" data-bottom="chat">
+          <i data-lucide="message-square" aria-hidden="true"></i>
+          <span>AI Chat</span>
+        </a>
+        <a class="vx-bottom-item ripple" href="profile.html" data-bottom="profile">
+          <i data-lucide="user" aria-hidden="true"></i>
+          <span>Profile</span>
+        </a>
+        <a class="vx-bottom-item ripple" href="settings.html" data-bottom="settings">
+          <i data-lucide="settings" aria-hidden="true"></i>
+          <span>Settings</span>
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      lucide.createIcons();
+
+      // Hide welcome card after first user message (future-proof: integrate with chat events)
+      // Current behavior: if input is used, we hide the welcome card.
+      const shell = document.querySelector('.vx-app-shell[data-page="chat"]');
+      const welcome = document.getElementById('welcomeCard');
+      const input = shell?.querySelector('.chat-input input');
+      if (welcome && input) {
+        const hideOnce = () => {
+          welcome.classList.add('is-hidden');
+          input.removeEventListener('input', hideOnce);
+          input.removeEventListener('keydown', hideOnce);
+        };
+        input.addEventListener('input', hideOnce, { passive: true });
+        input.addEventListener('keydown', (e) => {
+          if (e.key && e.key.length === 1) hideOnce();
+        });
+      }
+    </script>
+    <script src="js/nav.js"></script>
+    <script src="js/app.js"></script>
+  </div>
 </body>
-
 </html>
+
