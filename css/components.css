@@ -41,3 +41,20 @@ color:white;
 background:var(--surface);
 
 }
+
+/* Ensure Lucide icons and fallback <i> elements render and size correctly
+	 - Targets both the original <i data-lucide> placeholders and the
+		 <svg data-lucide> elements that Lucide injects so CSS sizing applies.
+*/
+i[data-lucide], svg[data-lucide] {
+	display: inline-block;
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	fill: currentColor;
+}
+
+/* Allow components to override icon size by targeting their container */
+.btn-icon, .vx-sidebar-link i, .vx-bottom-item i, .action i, .card i, .file-icon i, .metric-top i {
+	display: inline-block;
+}

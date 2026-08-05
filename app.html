@@ -130,8 +130,6 @@
             <input type="text" placeholder="Search chats...">
           </div>
 
-          </button>
-
           <div class="sidebar-section">
             <h4>Today</h4>
             <a class="active-chat">💬 POS Business</a>
@@ -167,30 +165,32 @@
           </div>
         </aside>
 
-        <section id="chat">
-          <div class="ai-message">
-            <div class="avatar"><img src="logo.png"></div>
-            <div class="bubble">
-              <h4>Vertex AI</h4>
-              <p>
-                Hello 👋
-                I'm your AI Business Strategist.
-                Tell me your business idea and I'll help you build it.
-              </p>
+        <section id="chat" class="chat-panel" aria-label="AI chat panel">
+          <div class="chat-panel-header">
+            <div>
+              <h2>AI Business Chat</h2>
+              <p>Start a conversation with Vertex AI and see how your idea can grow. Responses are simulated locally until a live API is available.</p>
+            </div>
+            <button class="new-chat" type="button">+ New Business Session</button>
+          </div>
+
+          <div id="chatThread" class="chat-thread" aria-live="polite">
+            <div class="ai-message">
+              <div class="avatar"><img src="logo.png" alt="Vertex AI"></div>
+              <div class="bubble">
+                <h4>Vertex AI</h4>
+                <p>Hello 👋 I'm your AI Business Strategist. Tell me your business idea and I’ll help you build it.</p>
+              </div>
             </div>
           </div>
 
           <div class="chat-input">
-            <button><i data-lucide="paperclip"></i></button>
-            <input placeholder="Ask Vertex AI...">
-            <button><i data-lucide="mic"></i></button>
-            <button class="send"><i data-lucide="arrow-up"></i></button>
+            <button type="button" id="attachBtn" aria-label="Add attachment"><i data-lucide="paperclip"></i></button>
+            <input id="chatInput" type="text" placeholder="Ask Vertex AI..." aria-label="Ask Vertex AI" autocomplete="off">
+            <button type="button" id="voiceBtn" aria-label="Voice input"><i data-lucide="mic"></i></button>
+            <button type="button" class="send" id="sendBtn" aria-label="Send message"><i data-lucide="arrow-up"></i></button>
           </div>
         </section>
-
-
-        <!-- Fixed bottom composer spacing helper (layout fix) -->
-        <div style="height:92px"></div>
 
       </div>
 
@@ -286,6 +286,7 @@
       }
     </script>
     <script src="js/nav.js"></script>
+    <script src="js/chat-app.js"></script>
     <script src="js/app.js"></script>
   </div>
 </body>

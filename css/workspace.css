@@ -25,7 +25,7 @@
   --vx-shadow:0 20px 60px rgba(0,0,0,.45);
   --vx-shadow-soft:0 10px 30px rgba(0,0,0,.35);
 
-  --vx-max:430px; /* mobile-first target */
+  --vx-max: min(1200px, 100%); /* mobile-first target, expands on larger screens */
   --vx-min-touch:48px;
 }
 
